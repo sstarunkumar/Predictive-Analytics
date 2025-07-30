@@ -1,0 +1,32 @@
+
+x = [1,2,3,4,5]
+y = [2,4,5,4,5]
+import numpy as np
+xav = np.array(x)
+xav = np.average(xav)
+print(xav)
+yav = np.average(np.array(y))
+print(yav)
+
+numerator = 0
+for i in range(5):
+  numerator = numerator + (x[i] - xav) * (y[i] - yav)
+denominator = 0
+for i in range(5):
+  denominator = denominator + (x[i] - xav) ** 2
+m = numerator/denominator
+print(m)
+#y = mx + c
+#c = y-mx 
+c = yav - m * xav
+print(c)
+import matplotlib.pyplot as plt
+plt.scatter(x,y)
+# plt.show()
+
+yline = []
+for i in range(5):
+  yline.append(m * x[i] + c)
+yline
+plt.plot(x,yline)
+plt.show()
